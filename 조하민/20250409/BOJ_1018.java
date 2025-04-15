@@ -1,7 +1,6 @@
+package zaryogujo;
 import java.util.Scanner;
- 
-public class Main {
- 
+public class Chess {
 	public static boolean[][] arr;
 	public static int min = 64;
  
@@ -15,7 +14,6 @@ public class Main {
 		arr = new boolean[N][M];
 		
         
-		// 배열 입력 
 		for (int i = 0; i < N; i++) {
 			String str = in.next();
 			
@@ -52,7 +50,6 @@ public class Main {
 		for (int i = x; i < end_x; i++) {
 			for (int j = y; j < end_y; j++) {
  
-				// 올바른 색이 아닐경우 count 1 증가 
 				if (arr[i][j] != TF) {	
 					count++;
 				}
