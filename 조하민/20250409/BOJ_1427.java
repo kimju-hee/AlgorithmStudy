@@ -1,37 +1,25 @@
-import java.util.Arrays;
+package zaryogujo;
 import java.util.Scanner;
 
-public class Main {
-
+public class Sort {
 	public static void main(String[] args) {
-
-		Scanner sc = new Scanner(System.in);
-
-		int[] high = new int[9];
-		int sum = 0;
-		int spyA = 0, spyB = 0;
-
-		for (int i = 0; i < high.length; i++) { 
-			high[i] = sc.nextInt();
-			sum += high[i]; 
+ 
+		Scanner in = new Scanner(System.in);
+ 
+		int[] counting = new int[10];
+ 
+		int N = in.nextInt();
+ 
+		while (N != 0) {
+			counting[N % 10]++;
+			N /= 10;
 		}
-		Arrays.sort(high); 
-		
-		for(int a = 0; a < high.length-1; a++) { 
-			for(int b = a+1; b < high.length; b++) {
-				if(sum - high[a] - high[b] == 100) { 
-					spyA = a;
-					spyB = b;
-					break;
-				}
+ 
+		for (int i = 9; i >= 0; i--) {
+			while (counting[i]-- > 0) {
+				System.out.print(i);
 			}
 		}
-		
-		for(int j = 0; j < high.length; j++) { 
-			if(j == spyA || j == spyB) 
-				continue;
-			System.out.println(high[j]);
-		}
-		sc.close();
+ 
 	}
 }
