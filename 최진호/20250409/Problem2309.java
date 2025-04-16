@@ -41,6 +41,6 @@ public class Problem2309 {
             if(arr[i]!=find_a&&arr[i]!=find_b){
                 System.out.println(arr[i]);
             }
-        }//복잡도 O(n^2) 인듯?
+        }
     }
 }
