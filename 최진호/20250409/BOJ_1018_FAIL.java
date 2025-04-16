@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Problem1018 {
+public class BOJ_1018_FAIL {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String[] mn = sc.nextLine().split(" ");

@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Problem2309 {
+public class BOJ_2309 {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         // 리스트 구성 및 리스트 합 추출
