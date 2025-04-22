@@ -1,0 +1,41 @@
+package zaryogujo;
+import java.util.*;
+
+public class Snackbox {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt();
+
+        int[] queue = new int[n];
+        for (int i = 0; i < n; i++) {
+            queue[i] = sc.nextInt();
+        }
+
+        Stack<Integer> stack = new Stack<>();
+        int current = 1;
+
+        for (int i = 0; i < n; i++) {
+            int person = queue[i];
+
+            if (person == current) {
+                current++;
+            } else {
+                stack.push(person);
+            }
+
+            while (!stack.isEmpty() && stack.peek() == current) {
+                stack.pop();
+                current++;
+            }
+        }
+
+        if (current - 1 == n) {
+            System.out.println("Nice");
+        } else {
+            System.out.println("Sad");
+        }
+
+        sc.close();
+    }
+}
