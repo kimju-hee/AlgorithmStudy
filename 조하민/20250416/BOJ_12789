@@ -7,16 +7,16 @@ public class Snackbox {
 
         int n = sc.nextInt();
 
-        int[] queue = new int[n];
+        int[] line = new int[n];
         for (int i = 0; i < n; i++) {
-            queue[i] = sc.nextInt();
+            line[i] = sc.nextInt();
         }
 
         Stack<Integer> stack = new Stack<>();
         int current = 1;
 
         for (int i = 0; i < n; i++) {
-            int person = queue[i];
+            int person = line[i];
 
             if (person == current) {
                 current++;
