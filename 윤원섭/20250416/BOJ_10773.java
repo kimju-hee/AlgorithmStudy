@@ -22,7 +22,7 @@ public class Main {
 
         // 스택이 빌 때까지 모든 수를 더함
         while (!stack.isEmpty()) {
-            result += stack.pop();
+            sum += stack.pop();
         }
         System.out.println(sum);
     }

@@ -19,8 +19,8 @@ public class Main {
         // 포켓몬 도감 정보 입력받아 두 해시맵에 저장
         for (int i = 1; i <= N; i++) {
             String name = br.readLine();  // 포켓몬 이름 입력
-            numberToName.put(i, name);    // 1 -> Pikachu
-            nameToNumber.put(name, i);    // Pikachu -> 1
+            numberToName.put(i, name);
+            nameToNumber.put(name, i);
         }
 
         // 결과를 저장할 StringBuilder
