@@ -1,7 +1,7 @@
 package SelfTest_최진호;
 import java.util.*;
 
-public class FreeSelfTest {
+public class _FreeSelfTest {
     public static void main(String[] args){
         Scanner sc = new Scanner(System.in);
         String[] input = sc.nextLine().split(" ");
