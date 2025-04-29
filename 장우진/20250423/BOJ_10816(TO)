@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        int[] cards = new int[N];
+        for (int i = 0; i < N; i++) {
+            cards[i] = sc.nextInt();
+        }
+        Arrays.sort(cards);
+
+        int M = sc.nextInt();
+        for (int i = 0; i < M; i++) {
+            int num = sc.nextInt();
+            int lower = lowerBound(cards, num);
+            int upper = upperBound(cards, num);
+            System.out.print((upper - lower) + " ");
+        }
+    }
+
+    public static int lowerBound(int[] arr, int num) {
+        int start = 0, end = arr.length;
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (arr[mid] < num) start = mid + 1;
+            else end = mid;
+        }
+        return start;
+    }
+
+    public static int upperBound(int[] arr, int num) {
+        int start = 0, end = arr.length;
+        while (start < end) {
+            int mid = (start + end) / 2;
+            if (arr[mid] <= num) start = mid + 1;
+            else end = mid;
+        }
+        return start;
+    }
+}
