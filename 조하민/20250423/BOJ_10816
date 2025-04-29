@@ -8,22 +8,22 @@ public class Card2 {
 
         int[] arr = new int[20000001];
 
-        int N = sc.nextInt();
-        for (int i = 0; i < N; i++) {
-            int num = sc.nextInt();
-            if (num < 0)
-                arr[-num + 10000000]++;
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+            int number = sc.nextInt();
+            if (number < 0)
+                arr[-number + 10000000]++;
             else
-                arr[num]++;
+                arr[number]++;
         }
 
-        int M = sc.nextInt();
-        for (int i = 0; i < M; i++) {
-            int num = sc.nextInt();
-            if (num < 0)
-                System.out.print(arr[-num + 10000000] + " ");
+        int m = sc.nextInt();
+        for (int i = 0; i < m; i++) {
+            int number = sc.nextInt();
+            if (number < 0)
+                System.out.print(arr[-number + 10000000] + " ");
             else
-                System.out.print(arr[num] + " ");
+                System.out.print(arr[number] + " ");
         }
 
         sc.close();
