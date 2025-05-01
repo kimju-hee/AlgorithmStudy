@@ -33,7 +33,7 @@ public class BOJ_10816 {
         // 2진 탐색은 2회 실시함.
         // 1회는 왼쪽에서 가장 가까운 Index, 2회는 오른쪽으로 가장 가까운 Index.
         
-        // 1회차 
+        // lower bound
         int left = 0;
         int right = arr.length;
         while(left<right){
@@ -43,7 +43,7 @@ public class BOJ_10816 {
         }
         int left_idx = left; // 중복 카드의 왼쪽 끝
 
-        // 2회차
+        // upper bound
         left = 0;
         right = arr.length;
         while(left<right){
