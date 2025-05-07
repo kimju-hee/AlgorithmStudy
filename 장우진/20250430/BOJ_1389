@@ -1,0 +1,58 @@
+import java.util.*;
+
+public class Main {
+    static final int INF = 1000000; // 연결되지 않은 경우를 표현하기 위한 큰 수
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt(); // 사람 수 (노드 수)
+        int M = sc.nextInt(); // 친구 관계 수 (간선 수)
+
+        int[][] dist = new int[N + 1][N + 1]; // 최단 거리를 저장할 인접 행렬
+
+        // 거리 배열 초기화
+        for (int i = 1; i <= N; i++) {
+            for (int j = 1; j <= N; j++) {
+                if (i == j) dist[i][j] = 0; // 자기 자신까지 거리는 0
+                else dist[i][j] = INF; // 초기엔 모두 연결되지 않았다고 가정
+            }
+        }
+
+        // 친구 관계 입력
+        for (int i = 0; i < M; i++) {
+            int a = sc.nextInt();
+            int b = sc.nextInt();
+            dist[a][b] = 1; // a와 b는 친구 관계이므로 거리 1
+            dist[b][a] = 1; // 무방향 그래프이므로 반대 방향도 1
+        }
+
+        // 플로이드-워셜 알고리즘 수행
+        for (int k = 1; k <= N; k++) { // 경유지
+            for (int i = 1; i <= N; i++) { // 출발지
+                for (int j = 1; j <= N; j++) { // 도착지
+                    if (dist[i][j] > dist[i][k] + dist[k][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j]; // 더 짧은 경로로 갱신
+                    }
+                }
+            }
+        }
+
+        // 각 사람의 케빈 베이컨 수(거리 합)를 계산
+        int minSum = Integer.MAX_VALUE; // 최소 거리 합 저장용
+        int result = -1; // 가장 케빈 베이컨 수가 작은 사람 번호
+
+        for (int i = 1; i <= N; i++) {
+            int sum = 0; // i번 사람의 거리 합
+            for (int j = 1; j <= N; j++) {
+                sum += dist[i][j]; // i에서 j까지의 최단 거리 합산
+            }
+
+            if (sum < minSum) {
+                minSum = sum; // 더 작은 거리 합이 발견되면 갱신
+                result = i; // 해당 사람 번호 저장
+            }
+        }
+
+        System.out.println(result); // 케빈 베이컨 수가 가장 작은 사람 출력
+    }
+}
