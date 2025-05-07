@@ -12,7 +12,7 @@ public class BOJ_2309 {
         }
         sc.close();
         
-        // 버블정렬 + 범인색출
+        // 선택정렬 + 범인색출
         boolean find = false;
         int find100;
         int tmp;
@@ -21,7 +21,7 @@ public class BOJ_2309 {
 
         for(int i=0;i<arr.length-1; i++){
             for(int j=i+1; j<arr.length; j++){
-                if(arr[i]>arr[j]){ //버블정렬 시도
+                if(arr[i]>arr[j]){ //선택정렬 시도
                     tmp = arr[i];
                     arr[i] = arr[j];
                     arr[j] = tmp;
@@ -36,7 +36,7 @@ public class BOJ_2309 {
                 }
             }
         }
-        // 범인이 아니면 출력이 안됨됨
+        // 범인이 아니면 출력이 안됨
         for(int i=0; i<arr.length; i++){
             if(arr[i]!=find_a&&arr[i]!=find_b){
                 System.out.println(arr[i]);
