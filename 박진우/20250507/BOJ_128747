@@ -1,0 +1,32 @@
+//BOJ_128747 꿀아르바이트
+//https://www.acmicpc.net/problem/12847
+
+import java.util.Scanner;
+
+public class BOJ_128747 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int m = sc.nextInt();
+
+        int [] li = new int[n];
+
+        for (int a = 0; a<n;a++){
+            li[a] = sc.nextInt();
+        }
+        int sum_value = 0;
+
+        for(int a = 0; a<m;a++){
+            sum_value+=li[a];
+        }
+        int max_value=sum_value;
+
+        for(int i =m;i<n;i++){
+            sum_value = sum_value - li[i-m] + li[i];
+            if(sum_value>max_value){
+                max_value=sum_value;
+            }
+        }
+        System.out.println(max_value);
+    }
+}
