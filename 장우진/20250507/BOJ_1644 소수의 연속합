@@ -1,0 +1,61 @@
+import java.util.*;
+
+public class Main {
+    static int[] primes;
+    static int n;
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        n = sc.nextInt();
+
+        SieveOfE(n);
+
+        int cnt = 0;
+        int left = 0, right = 0, sum = 0;
+
+        while (true) {
+            if (sum >= n) {
+                sum -= primes[left++]; // sum이 n보다 크거나 같으면 left 증가
+            } else if (right == primes.length) {
+                break; // 모든 소수를 확인했으면 종료
+            } else {
+                sum += primes[right++]; // sum이 n보다 작으면 right 증가
+            }
+
+            if (sum == n) cnt++;
+        }
+
+        System.out.println(cnt);
+    }
+
+    static void SieveOfE(int number) {
+        int[] a = new int[number + 1];
+
+        for (int i = 2; i <= number; i++) { 
+            a[i] = i; // 1은 소수가 아니므로, 2부터 number까지 배열에 값을 채워넣음
+        }
+
+        // 2부터 시작해서 특정 수의 배수에 해당하는 수를 모두 지움. 단, 자기 자신은 지우지 않고, 이미 지워진 수는 건너뜀
+        for (int i = 2; i <= number; i++) {
+            if (a[i] == 0) continue; // 이미 지워진 수라면 건너뜀
+
+            // 지워진 숫자가 아니라면, 그 배수부터 출발하여 가능한 모든 숫자 지우기
+            for (int j = 2 * i; j <= number; j += i) {
+                a[j] = 0;
+            }
+        }
+
+        // 2부터 시작하여 남아있는 수(0이 아닌 수)를 모두 리스트에 추가
+        ArrayList<Integer> primeList = new ArrayList<>();
+        for (int i = 2; i <= number; i++) {
+            if (a[i] != 0) {
+                primeList.add(a[i]);
+            }
+        }
+        // 투포인터 활용을 위해 리스트를 배열로 변환
+        primes = new int[primeList.size()];
+        for (int i = 0; i < primeList.size(); i++) {
+            primes[i] = primeList.get(i);
+        }
+    }
+}
