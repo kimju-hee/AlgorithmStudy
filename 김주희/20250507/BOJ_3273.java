@@ -33,7 +33,7 @@ public class BOJ_3273 {
             if (list[start] + list[end] <= target) {
                 start ++;
             } else {
-                end —;
+                end --;
             }
         }
         System.out.println(count);
