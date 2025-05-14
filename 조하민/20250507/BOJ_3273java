@@ -1,0 +1,40 @@
+package zaryogujo;
+
+import java.util.*;
+
+public class Twonum {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt(); 
+        int[] numbers = new int[n];
+
+        for (int i = 0; i < n; i++) {
+            numbers[i] = sc.nextInt(); 
+        }
+
+        int x = sc.nextInt(); 
+
+        Arrays.sort(numbers); 
+
+        int left = 0;
+        int right = n - 1;
+        int count = 0;
+
+        while (left < right) {
+            int total = numbers[left] + numbers[right];
+            if (total == x) {
+                count += 1;
+                left += 1;
+                right -= 1;
+            } else if (total < x) {
+                left += 1;
+            } else {
+                right -= 1;
+            }
+        }
+
+        System.out.println(count);
+    }
+}

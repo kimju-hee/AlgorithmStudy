@@ -1,0 +1,34 @@
+package zaryogujo;
+
+import java.util.*;
+
+public class Alba {
+
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		
+		int n = sc.nextInt();
+		int m = sc.nextInt();
+		
+		long [] numbers = new long[n];
+		for (int i=0; i<n; i++) {
+			numbers[i] = sc.nextLong();
+		}
+		
+		long sum = 0;
+		for (int i=0; i<m; i++) {
+			sum += numbers[i];
+		}
+		
+		long max = sum;
+		
+		for (int i = m; i < n; i++) {
+            sum += numbers[i] - numbers[i - m];
+            if (sum > max) {
+                max = sum;
+            }
+        }
+
+        System.out.println(max);
+    }
+}
