@@ -6,22 +6,32 @@ public class Main{
         
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int N = Integer.parseInt(br.readLine());
-
-
+        
+        //N이 1일 때 0리턴
+        if (N == 1){
+            System.out.print(0);
+            return ;
+        }
+        
+        //소수로만 이루어진 배열로 초기화
         int[] primes = onlyPrime(N);
         int sum = 0, count = 0;
         int start = 0, end = 0;
-
-        while (end < primes.length){
+        
+        //투 포인터
+        while (start < primes.length || end < primes.length){
             
-            if (sum < N) sum += primes[end++];
-            else if (sum >= N){
+            if (sum >= N){
                 if (sum == N) count++;
                 sum -= primes[start++];   
             }
+            else{ 
+                if (end == primes.length) break;
+                sum += primes[end++];
+            }
         }
         System.out.print(count);
-
+        
     }
 
     //에라스토테네스의 체
