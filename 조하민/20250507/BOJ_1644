@@ -1,0 +1,57 @@
+package zaryogujo;
+
+import java.util.*;
+
+public class Prime {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+
+        if (n == 1) {
+            System.out.println(0);
+            return;
+        }
+
+        boolean[] prime = new boolean[n + 1];
+        Arrays.fill(prime, true);
+        prime[0] = false;
+        prime[1] = false;
+
+        for (int i = 2; i <= Math.sqrt(n); i++) {
+            if (prime[i]) {
+                for (int j = i * i; j <= n; j += i) {
+                    prime[j] = false;
+                }
+            }
+        }
+
+        List<Integer> primeList = new ArrayList<>();
+        for (int i = 2; i <= n; i++) {
+            if (prime[i]) {
+                primeList.add(i);
+            }
+        }
+
+        int left = 0;
+        int right = 0;
+        int total = 0;
+        int count = 0;
+
+        while (true) {
+            if (total >= n) {
+                if (total == n) {
+                    count++;
+                }
+                total -= primeList.get(left);
+                left++;
+            } else if (right == primeList.size()) {
+                break;
+            } else {
+                total += primeList.get(right);
+                right++;
+            }
+        }
+
+        System.out.println(count);
+    }
+}

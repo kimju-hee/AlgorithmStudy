@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int n = sc.nextInt(); 
+        int m = sc.nextInt(); 
+
+        long[] arr = new long[n]; 
+        for (int i = 0; i < n; i++) {
+            arr[i] = sc.nextLong();
+        }
+
+        long sum = 0;
+        for (int i = 0; i < m; i++) {
+            sum += arr[i]; // 일을 할 수 있는 구간의 합
+        }
+
+        long maxSum = sum; 
+
+        for (int i = m; i < n; i++) {
+            sum = sum - arr[i - m] + arr[i]; 
+//슬라이딩 윈도우 적용(전 구간에서의 첫날 급여를 빼고, 다음날 급여(다음 구간에서의 첫날 급여) 추가)
+            if (sum > maxSum) {
+                maxSum = sum;
+            }
+        }
+
+        System.out.println(maxSum);
+    }
+}

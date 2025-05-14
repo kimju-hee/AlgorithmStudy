@@ -1,0 +1,48 @@
+//BOJ_1644 소수의 연속합
+//https://www.acmicpc.net/problem/1644
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class BOJ_1644 {
+    static boolean prime [];
+    static ArrayList<Integer> list = new ArrayList<>();
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        list = new ArrayList<>();
+
+        prime = new boolean[n+1];
+        prime[0] = prime[1]=true;
+        for(int i = 2;i<=n;i++){
+            if (!prime[i]){
+                for (int j=i*i;j<=n;j+=i){
+                    prime[j]=true;
+                }
+            }
+        }
+        for(int i = 1;i<=n;i++){
+            if (!prime[i]){
+                list.add(i);
+            }
+        }
+
+        int start = 0;
+        int sum = 0;
+        int end=0;
+        int count=0;
+
+        while (true){
+            if(sum>=n){
+                sum-= list.get(start++);
+            } else if (end == list.size()) {
+                break;
+            }else {
+                sum+=list.get(end++);
+            }
+            if(n==sum) count++;
+
+        }
+        System.out.println(count);
+    }
+}
