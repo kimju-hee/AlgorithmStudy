@@ -10,14 +10,11 @@ public class Main {
 
         // 배열에 정수 n개를 입력받아 저장
         for (int i = 0; i < n; i++) {
-            arr[i] = sc.nextInt(); // i번째 위치에 사용자로부터 입력 받은 값 저장
+            arr[i] = sc.nextInt();
         }
 
-        // 두 수의 합으로 찾고 싶은 값 x 입력
+        // 두 수의 합으로 찾고 싶은 값
         int x = sc.nextInt();
-
-        // 더 이상 입력 받을 일이 없으므로 Scanner 종료 (자원 누수 방지)
-        sc.close(); 
 
         // 오름차순 정렬
         Arrays.sort(arr);
