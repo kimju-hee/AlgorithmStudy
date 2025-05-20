@@ -1,0 +1,52 @@
+import java.util.Scanner;
+ 
+public class Main {
+ 
+    public static void main(String[] args) {
+ 
+        Scanner in = new Scanner(System.in);
+
+        int N = in.nextInt();
+        int[] seq = new int[N];
+        int[] dp = new int[N];
+
+        for(int i = 0; i < N; i++) {
+            seq[i] = in.nextInt();
+        }
+
+        // dp
+        for(int i = 0; i < N; i++) {
+            dp[i] = 1;
+
+            // i 이전의 원소들 탐색
+            for(int j = 0; j < i; j++) {
+
+                // j번째 원소가 i번째 원소보다 작고, dp[i]가 dp[j]+1 값보다 작은 경우
+                if(seq[j] < seq[i] && dp[i] < dp[j] + 1) {
+                    dp[i] = dp[j] + 1;
+                }
+            }
+        }
+
+        // 최댓값(최대 길이) 탐색 
+        int max = -1;
+        for(int i = 0; i < N; i++) {
+            max = dp[i] > max ? dp[i] : max;
+        }
+        System.out.println(max);
+
+    }
+ 
+}
+
+
+/* 결국, dp[i]는 i번째 원소에서의 가장 긴 증가 수열의 개수이다.
+seq = [3, 10, 2, 1, 20] 이를 예로 들면,
+i = 0 일때 seq[0]는 3이고, 자기 혼자 있으므로 가능한 증가 수열은 [3] 이므로 dp[0] = 1 이다.
+i = 1 일때 seq[1]은 10이고, 가능한 증가 수열은 [3, 10] 이므로 dp[1] = 2 이다.
+i = 2 일때 seq[2]는 2이고, 가능한 증가 수열이 없으므로 [2]이고, dp[2] = 1 이다.
+i = 3 일때 seq[3]은 1이고, i = 2일때와 마찬가지로 [1]. dp[3] = 1 이다.
+i = 4 일때 seq[4]는 20이고, 가능한 증가 수열은 [3, 10, 20]이고, dp[4] = 3이다.
+
+여기서 i = 4 일때 가능한 증가 수열이 [3, 10, 20]인 이유는, 배열에서 원래 순서를 유지한 채 증가하는 수열을 찾는 것이기 때문이다.
+*/
