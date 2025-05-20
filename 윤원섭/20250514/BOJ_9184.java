@@ -16,7 +16,7 @@ public class Main {
             int b = Integer.parseInt(inputs[1]);
             int c = Integer.parseInt(inputs[2]);
 
-            // 종료 조건: -1 -1 -1 입력 시 프로그램 종료
+            // -1 -1 -1 입력 시 종료
             if (a == -1 && b == -1 && c == -1) {
                 break;
             }
